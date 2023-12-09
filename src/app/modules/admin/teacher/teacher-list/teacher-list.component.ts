@@ -28,4 +28,5 @@ export class TeacherListComponent implements OnInit {
       this.teacherList = teachersData;
     })
   }
+  
 }
