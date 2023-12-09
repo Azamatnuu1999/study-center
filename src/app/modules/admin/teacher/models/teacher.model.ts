@@ -12,6 +12,7 @@ export interface TeachersResponse {
 }
 
 export interface TeachersRequest {
+    id: number,
     name: string,
     description: string,
     address: string,

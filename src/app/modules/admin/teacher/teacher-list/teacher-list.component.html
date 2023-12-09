@@ -1,18 +1,32 @@
+<button 
+  [routerLink]="['add']"
+  class="mb-1"
+  nz-button 
+  nzType="primary"
+>Add</button>
+
 <nz-table #basicTable [nzData]="teacherList">
     <thead>
       <tr>
         <th>Name</th>
-        <th>Age</th>
+        <th>Description</th>
+        <th>Date of Birth</th>
+        <th>Phone Number</th>
+        <th>Telegram Address</th>
+        <th>Email Address</th>
         <th>Address</th>
-        <th>Action</th>
+        <th>Specialization</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td>{{ data.name }}</td>
+        <td>{{ data.description }}</td>
         <td>{{ data.dateOfBirth }}</td>
         <td>{{ data.phone }}</td>
+        <td>{{ data.telegramUserName }}</td>
         <td>{{ data.email }}</td>
+        <td>{{ data.address }}</td>
         <td>{{ data.specialization }}</td>
         <td>
           <nz-button-group>

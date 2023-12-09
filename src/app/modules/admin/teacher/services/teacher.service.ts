@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { TeachersResponse } from "../models/teacher.model";
+import { TeachersRequest, TeachersResponse } from "../models/teacher.model";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -28,5 +28,12 @@ export class TeacherService {
      */
     getAll() : Observable<TeachersResponse[]> {
         return this.http.get<TeachersResponse[]>(this.url);
+    }
+
+    /**
+     * 
+     */
+    postData(model: TeachersRequest) {
+        return this.http.post(this.url, model);
     }
 }
