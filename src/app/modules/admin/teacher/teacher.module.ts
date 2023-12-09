@@ -8,6 +8,9 @@ import { TeacherListComponent } from "./teacher-list/teacher-list.component";
 import { TeacherAddEditComponent } from "./teacher-add-edit/teacher-edit.component";
 import { NzButtonModule } from "ng-zorro-antd/button";
 import { NzIconModule } from "ng-zorro-antd/icon";
+import { NzFormModule } from "ng-zorro-antd/form";
+import { NzInputModule } from "ng-zorro-antd/input";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule ({
     declarations: [ 
@@ -17,11 +20,15 @@ import { NzIconModule } from "ng-zorro-antd/icon";
     ],
     imports: [ 
         CommonModule, 
-        TeacherRoutingModule, 
+        TeacherRoutingModule,
+        ReactiveFormsModule, 
+
         NzDividerModule,
         NzTableModule,
         NzButtonModule,
-        NzIconModule
+        NzIconModule,
+        NzFormModule,
+        NzInputModule
     ]
 })
 

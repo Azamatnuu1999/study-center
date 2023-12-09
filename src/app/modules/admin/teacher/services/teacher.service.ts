@@ -31,9 +31,23 @@ export class TeacherService {
     }
 
     /**
+     *
+     */
+    getById(id: number) : Observable<TeachersResponse> {
+        return this.http.get<TeachersResponse>(`${this.url}/${id}`)
+    }
+
+    /**
      * 
      */
     postData(model: TeachersRequest) {
         return this.http.post(this.url, model);
+    }
+
+    /**
+     * 
+     */
+    putData(id: number, model: TeachersRequest) {
+        return this.http.put(`${this.url}/${id}`, model);
     }
 }

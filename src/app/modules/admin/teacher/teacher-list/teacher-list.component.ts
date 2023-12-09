@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeachersResponse } from '../models/teacher.model';
 import { TeacherService } from '../services/teacher.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-teacher-list',
@@ -18,7 +19,9 @@ export class TeacherListComponent implements OnInit {
    * 
    */
   constructor(
-    private $teachers: TeacherService
+    private $teachers: TeacherService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
@@ -28,5 +31,13 @@ export class TeacherListComponent implements OnInit {
       this.teacherList = teachersData;
     })
   }
-  
+
+  /**
+   * 
+   * @param id 
+   */
+  edit(id: number) {
+    this.router.navigate(['edit',id], { relativeTo: this.route })
+  }
+
 }

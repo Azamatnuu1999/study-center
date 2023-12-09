@@ -19,22 +19,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.description }}</td>
-        <td>{{ data.dateOfBirth }}</td>
-        <td>{{ data.phone }}</td>
-        <td>{{ data.telegramUserName }}</td>
-        <td>{{ data.email }}</td>
-        <td>{{ data.address }}</td>
-        <td>{{ data.specialization }}</td>
+      <tr *ngFor="let teacher of basicTable.data">
+        <td>{{ teacher.name }}</td>
+        <td>{{ teacher.description }}</td>
+        <td>{{ teacher.dateOfBirth }}</td>
+        <td>{{ teacher.phone }}</td>
+        <td>{{ teacher.telegramUserName }}</td>
+        <td>{{ teacher.email }}</td>
+        <td>{{ teacher.address }}</td>
+        <td>{{ teacher.specialization }}</td>
         <td>
           <nz-button-group>
             <button nz-button>
                 <span nz-icon nzType="delete" nzTheme="twotone"></span>
             </button>
             <button nz-button>
-                <span nz-icon nzType="edit" nzTheme="twotone"></span>
+                <span (click)="edit(teacher.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
             </button>
           </nz-button-group>
         </td>

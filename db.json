@@ -1,28 +1,40 @@
 {
-    "teachers" : [
-        {
-            "id": 1,
-            "name": "Alex",
-            "description": "Assistent teacher",
-            "address": "London city",
-            "dateOfBirth": "12/01/2000",
-            "dateOfRegister": "13/12/2023",
-            "phone": "+44 523321464",
-            "email": "Alex23@gmail.com",
-            "telegramUserName": "t.me/AlexAlan",
-            "specialization": "Teacher"
-        },
-        {
-            "id": 2,
-            "name": "Bob",
-            "description": "Assistent teacher",
-            "address": "London city",
-            "dateOfBirth": "21/11/2000",
-            "dateOfRegister": "10/12/2023",
-            "phone": "+44 523323464",
-            "email": "Alan@gmail.com",
-            "telegramUserName": "t.me/AlanFrix",
-            "specialization": "Teacher"
-        }
-    ]
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Alex",
+      "description": "Assistent teacher",
+      "address": "London city",
+      "dateOfBirth": "12/01/2000",
+      "dateOfRegister": "13/12/2023",
+      "phone": "+44 523321464",
+      "email": "Alex23@gmail.com",
+      "telegramUserName": "t.me/AlexAlan",
+      "specialization": "Teacher"
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "description": "Assistent teacher",
+      "address": "London city",
+      "dateOfBirth": "21/11/2000",
+      "dateOfRegister": "10/12/2023",
+      "phone": "+44 523323464",
+      "email": "Alan@gmail.com",
+      "telegramUserName": "t.me/AlanFrix",
+      "specialization": "Teacher"
+    },
+    {
+      "id": 3,
+      "name": "Tim",
+      "description": "Actor",
+      "dateOfBirth": "2000-01-02",
+      "dateOfRegister": "2021-01-05",
+      "phone": "+44 890673599",
+      "email": "TimSmall@gmail.com",
+      "telegramUserName": "t.me/Tim2000",
+      "address": "Paris",
+      "specialization": "Actor"
+    }
+  ]
 }
