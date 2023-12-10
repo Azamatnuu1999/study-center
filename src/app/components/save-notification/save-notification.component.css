@@ -1,0 +1,7 @@
+.mdc-snackbar__surface {
+    padding-right: 0px !important;
+}
+
+.mat-mdc-snack-bar-label {
+    background-color: green !important;
+}

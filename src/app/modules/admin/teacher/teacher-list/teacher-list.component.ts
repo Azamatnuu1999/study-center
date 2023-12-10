@@ -27,6 +27,13 @@ export class TeacherListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getTeachers()
+  }
+
+  /**
+   * 
+   */
+  getTeachers() {
     this.$teachers.getAll().subscribe((teachersData) => {
       this.teacherList = teachersData;
     })
@@ -36,8 +43,17 @@ export class TeacherListComponent implements OnInit {
    * 
    * @param id 
    */
-  edit(id: number) {
+  editTeacher(id: number) {
     this.router.navigate(['edit',id], { relativeTo: this.route })
+  }
+
+  /**
+   * 
+   */
+  deleteTeacher(id: number) {
+    this.$teachers.deleteData(id).subscribe(() => {
+      this.getTeachers()
+    })
   }
 
 }

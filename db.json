@@ -4,12 +4,12 @@
       "id": 1,
       "name": "Alex",
       "description": "Assistent teacher",
-      "address": "London city",
       "dateOfBirth": "12/01/2000",
       "dateOfRegister": "13/12/2023",
       "phone": "+44 523321464",
       "email": "Alex23@gmail.com",
       "telegramUserName": "t.me/AlexAlan",
+      "address": "London city",
       "specialization": "Teacher"
     },
     {
@@ -26,14 +26,14 @@
     },
     {
       "id": 3,
-      "name": "Tim",
+      "name": "Tims",
       "description": "Actor",
       "dateOfBirth": "2000-01-02",
       "dateOfRegister": "2021-01-05",
       "phone": "+44 890673599",
       "email": "TimSmall@gmail.com",
       "telegramUserName": "t.me/Tim2000",
-      "address": "Paris",
+      "address": "Paris city",
       "specialization": "Actor"
     }
   ]

@@ -50,4 +50,11 @@ export class TeacherService {
     putData(id: number, model: TeachersRequest) {
         return this.http.put(`${this.url}/${id}`, model);
     }
+
+    /**
+     * 
+     */
+    deleteData(id: number) {
+        return this.http.delete(`${this.url}/${id}`);
+    }
 }

@@ -8,6 +8,7 @@
 <nz-table #basicTable [nzData]="teacherList">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Description</th>
         <th>Date of Birth</th>
@@ -20,6 +21,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let teacher of basicTable.data">
+        <td>{{ teacher.id }}</td>
         <td>{{ teacher.name }}</td>
         <td>{{ teacher.description }}</td>
         <td>{{ teacher.dateOfBirth }}</td>
@@ -31,10 +33,10 @@
         <td>
           <nz-button-group>
             <button nz-button>
-                <span nz-icon nzType="delete" nzTheme="twotone"></span>
+                <span (click)="deleteTeacher(teacher.id)" nz-icon nzType="delete" nzTheme="twotone"></span>
             </button>
             <button nz-button>
-                <span (click)="edit(teacher.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
+                <span (click)="editTeacher(teacher.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
             </button>
           </nz-button-group>
         </td>

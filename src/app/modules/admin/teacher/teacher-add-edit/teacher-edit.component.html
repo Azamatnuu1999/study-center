@@ -1,12 +1,11 @@
 <h3 class="title">
     <span 
-      [routerLink]="[id ? '../../' : '../']" 
+      [routerLink]="[isAdd ? '../' : '../../']" 
       nz-icon 
       nzType="arrow-left" 
       nzTheme="outline"
     ></span>
-    {{ id ? 'Edit' : 'Add' }} Teacher
-    {{ id }}
+    {{ isAdd ? 'Add' : 'Edit' }} Teacher
 </h3>
 <!-- FORM -->
 <form [formGroup]="form" nz-form>
@@ -76,7 +75,7 @@
 
       <!-- SAVE AND CLEAR BUTTONS -->
       <div class="d-flex gap-1 justify-content-end">
-        <button (click)="addTeacher()" nz-button nzType="primary">{{ id ? 'Edit' : 'Add' }}</button>
+        <button (click)="addTeacher()" nz-button nzType="primary">{{ isAdd ? 'Add' : 'Edit' }}</button>
         <button (click)="reset()" nz-button>Clear</button>
       </div>
   </form>
