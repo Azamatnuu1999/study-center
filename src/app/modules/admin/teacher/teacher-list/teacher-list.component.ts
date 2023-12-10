@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeachersResponse } from '../models/teacher.model';
 import { TeacherService } from '../services/teacher.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-teacher-list',
@@ -13,7 +14,7 @@ export class TeacherListComponent implements OnInit {
   /**
    * 
    */
-  teacherList!: TeachersResponse[];
+  public teachers$!: Observable<TeachersResponse[]>;
 
   /**
    * 
@@ -34,9 +35,7 @@ export class TeacherListComponent implements OnInit {
    * 
    */
   getTeachers() {
-    this.$teachers.getAll().subscribe((teachersData) => {
-      this.teacherList = teachersData;
-    })
+    this.teachers$ = this.$teachers.getAll()
   }
 
   /**

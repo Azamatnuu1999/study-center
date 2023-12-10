@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
   isCollapsed = false;
+
 }

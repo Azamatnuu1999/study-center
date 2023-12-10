@@ -16,25 +16,75 @@
       "id": 2,
       "name": "Bob",
       "description": "Assistent teacher",
-      "address": "London city",
       "dateOfBirth": "21/11/2000",
       "dateOfRegister": "10/12/2023",
       "phone": "+44 523323464",
       "email": "Alan@gmail.com",
       "telegramUserName": "t.me/AlanFrix",
+      "address": "London city",
       "specialization": "Teacher"
     },
     {
       "id": 3,
-      "name": "Tims",
-      "description": "Actor",
-      "dateOfBirth": "2000-01-02",
-      "dateOfRegister": "2021-01-05",
-      "phone": "+44 890673599",
-      "email": "TimSmall@gmail.com",
-      "telegramUserName": "t.me/Tim2000",
-      "address": "Paris city",
-      "specialization": "Actor"
+      "name": "Sam",
+      "description": "Assistent teacher",
+      "dateOfBirth": "2/10/2000",
+      "dateOfRegister": "1/01/2023",
+      "phone": "+44 523883464",
+      "email": "Sam@gmail.com",
+      "telegramUserName": "t.me/Samm",
+      "address": "London city",
+      "specialization": "Teacher"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "Robert",
+      "description": "Entry Student",
+      "dateOfBirth": "12/01/1998",
+      "dateOfRegister": "3/2/2021",
+      "phone": "+44 789634096",
+      "email": "Alex23@gmail.com",
+      "telegramUserName": "t.me/RobertM",
+      "address": "London city",
+      "learningSubject": "Algebra"
+    },
+    {
+      "id": 1,
+      "name": "Karlson",
+      "description": "Middle Student",
+      "dateOfBirth": "24/11/1999",
+      "dateOfRegister": "3/2/2020",
+      "phone": "+44 895473824",
+      "email": "karl23@gmail.com",
+      "telegramUserName": "t.me/karlson",
+      "address": "London city",
+      "learningSubject": "Physics"
+    },
+    {
+      "id": 3,
+      "name": "Sherlock",
+      "description": "Expert Student",
+      "dateOfBirth": "20/01/2001",
+      "dateOfRegister": "1/01/2023",
+      "phone": "+44 123454321",
+      "email": "lock@gmail.com",
+      "telegramUserName": "t.me/Sher",
+      "address": "London city",
+      "learningSubject": "Logic"
+    },
+    {
+      "id": 4,
+      "name": "Yukimiya",
+      "description": "Entry Student",
+      "dateOfBirth": "23.04.2004",
+      "dateOfRegister": "23.01.2023",
+      "phone": "+998 901233333",
+      "email": "yuki@gmail.com",
+      "telegramUserName": "t.me/myYuki",
+      "address": "Tokio city",
+      "learningSubject": "Math"
     }
   ]
 }

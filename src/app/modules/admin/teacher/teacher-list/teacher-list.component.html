@@ -5,7 +5,8 @@
   nzType="primary"
 >Add</button>
 
-<nz-table #basicTable [nzData]="teacherList">
+<ng-container *ngIf="teachers$ | async as teachers; else loading">
+  <nz-table #basicTable [nzData]="teachers">
     <thead>
       <tr>
         <th>ID</th>
@@ -17,6 +18,7 @@
         <th>Email Address</th>
         <th>Address</th>
         <th>Specialization</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -33,13 +35,18 @@
         <td>
           <nz-button-group>
             <button nz-button>
-                <span (click)="deleteTeacher(teacher.id)" nz-icon nzType="delete" nzTheme="twotone"></span>
+              <span (click)="editTeacher(teacher.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
             </button>
             <button nz-button>
-                <span (click)="editTeacher(teacher.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
+                <span (click)="deleteTeacher(teacher.id)" nz-icon nzType="delete" nzTheme="twotone"></span>
             </button>
           </nz-button-group>
         </td>
       </tr>
     </tbody>
   </nz-table>
+</ng-container>
+
+<ng-template #loading>
+  loading ...
+</ng-template>

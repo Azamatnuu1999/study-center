@@ -44,3 +44,23 @@ nz-breadcrumb {
 nz-footer {
   text-align: center;
 }
+
+.d-flex {
+  display: flex;
+}
+
+.g-1 {
+  gap: 4px;
+}
+
+.text-white {
+  color:white;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.display-none {
+  display: none;
+}

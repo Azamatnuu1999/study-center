@@ -12,21 +12,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CommonModule } from '@angular/common';
+import { SaveNotificationComponent } from './components/save-notification/save-notification.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SaveNotificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+
     NzLayoutModule,
     NzBreadCrumbModule,
     NzIconModule,
     NzMenuModule,
+
     MatButtonModule,
     MatSnackBarModule,
   ],

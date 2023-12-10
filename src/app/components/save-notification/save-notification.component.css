@@ -1,7 +1,22 @@
-.mdc-snackbar__surface {
-    padding-right: 0px !important;
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    padding-right: 0 !important;
+    align-content: center;
+    color: white !important;
+    font-size: 16px !important;
 }
 
-.mat-mdc-snack-bar-label {
-    background-color: green !important;
+.success {
+    background-color: #1acd67 !important;
+}
+
+.alert {
+    background-color: #ffc62f !important;
+}
+
+.danger {
+    background-color: #fd4b47 !important;
+}
+
+.mt-2 {
+    margin-top: 8px !important;
 }

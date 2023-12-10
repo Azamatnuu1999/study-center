@@ -1,10 +1,22 @@
 <nz-layout>
     <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-      <div class="logo"></div>
+      <div class="logo d-flex g-1 items-center">
+        <img src="assets/img/study.png" width="30px" alt="study center logo">
+        <h4 
+          class="text-white" 
+          [ngClass]="isCollapsed ? 'display-none' : ''"
+        >
+          Study-center
+        </h4>
+      </div>
       <ul nz-menu nzTheme="dark" nzMode="inline">
         <li nz-menu-item [routerLink]="['teacher']">
           <span nz-icon nzType="user" nzTheme="outline"></span>
           <span>Teacher</span>
+        </li>
+        <li nz-menu-item [routerLink]="['student']">
+          <span nz-icon nzType="team" nzTheme="outline"></span>
+          <span>Student</span>
         </li>
       </ul>
     </nz-sider>
@@ -20,12 +32,12 @@
       <nz-content>
         <nz-breadcrumb>
           <nz-breadcrumb-item>Admin</nz-breadcrumb-item>
-          <nz-breadcrumb-item>Teacher</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Section</nz-breadcrumb-item>
         </nz-breadcrumb>
         <div class="inner-content">
             <router-outlet></router-outlet>
         </div>
       </nz-content>
-      <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+      <nz-footer>Ant Design ©2023 Implement By Angular</nz-footer>
     </nz-layout>
   </nz-layout>

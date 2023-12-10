@@ -1,0 +1,52 @@
+<button 
+  [routerLink]="['add']"
+  class="mb-1"
+  nz-button 
+  nzType="primary"
+>Add</button>
+
+<ng-container *ngIf="students$ | async as students; else loading">
+  <nz-table #basicTable [nzData]="students">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date of Birth</th>
+        <th>Phone Number</th>
+        <th>Telegram Address</th>
+        <th>Email Address</th>
+        <th>Address</th>
+        <th>Learning Subject</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of basicTable.data">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.description }}</td>
+        <td>{{ student.dateOfBirth }}</td>
+        <td>{{ student.phone }}</td>
+        <td>{{ student.telegramUserName }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.address }}</td>
+        <td>{{ student.learningSubject }}</td>
+        <td>
+          <nz-button-group>
+            <button nz-button>
+              <span (click)="editStudent(student.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
+            </button>
+            <button nz-button>
+                <span (click)="deleteStudent(student.id)" nz-icon nzType="delete" nzTheme="twotone"></span>
+            </button>
+          </nz-button-group>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</ng-container>
+
+<ng-template #loading>
+  loading ...
+</ng-template>

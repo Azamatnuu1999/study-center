@@ -13,6 +13,10 @@ const routes: Routes = [
                 loadChildren: () => import("./teacher/teacher.module").then((m) => m.TeacherModule),
                 title: 'Teacher Sahifasi'
             },
+            {
+                path: 'student',
+                loadChildren: () => import("./student/student.module").then((m) => m.StudentModule)
+            }
         ]
     },
     {

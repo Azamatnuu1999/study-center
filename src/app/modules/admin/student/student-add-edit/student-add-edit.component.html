@@ -1,0 +1,81 @@
+<h3 class="title">
+    <span 
+      [routerLink]="[isAdd ? '../' : '../../']" 
+      nz-icon 
+      nzType="arrow-left" 
+      nzTheme="outline"
+    ></span>
+    {{ isAdd ? 'Add' : 'Edit' }} Student
+</h3>
+<!-- FORM -->
+<form [formGroup]="form" nz-form>
+    <!-- NAME -->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="name">Name</nz-form-label>
+      <nz-form-control nzErrorTip="Please input your Name!" [nzSpan]="14">
+        <input nz-input formControlName="name" name="name" type="text" id="name">
+      </nz-form-control>
+    </nz-form-item >
+    <!-- DESCRIPTION -->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="description">Description</nz-form-label>
+      <nz-form-control nzErrorTip="Please input your Description!" [nzSpan]="14">
+        <input nz-input formControlName="description" name="description" type="text" id="description">
+      </nz-form-control>
+    </nz-form-item >
+    <!-- DATE OF BIRTH -->
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="dateOfBirth">Date of Birth</nz-form-label>
+      <nz-form-control nzErrorTip="Please input your Date of Birth!" [nzSpan]="14">
+        <input nz-input formControlName="dateOfBirth" name="dateOfBirth" type="datetime" id="dateOfBirth">
+      </nz-form-control>
+    </nz-form-item >
+    <!-- DATE OF REGISTER -->
+    <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="dateOfRegister">Date of Register</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your Date of Register!" [nzSpan]="14">
+          <input nz-input formControlName="dateOfRegister" name="dateOfRegister" type="datetime" id="dateOfRegister">
+        </nz-form-control>
+      </nz-form-item >
+    <!-- PHONE NUBMER -->
+    <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="phone">Phone Number</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your Phone Number!" [nzSpan]="14">
+          <input nz-input formControlName="phone" name="dateOfBirth" type="text" id="phone">
+        </nz-form-control>
+      </nz-form-item >
+      <!-- EMAIL -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="email">Email</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your Email!" [nzSpan]="14">
+          <input nz-input formControlName="email" name="email" type="email" id="email">
+        </nz-form-control>
+      </nz-form-item>
+      <!-- TELEGRAM USER NAME -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="telegram">Telegram user Name</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your Telegram!" [nzSpan]="14">
+          <input nz-input formControlName="telegramUserName" name="telegramUserName" type="text" id="telegram">
+        </nz-form-control>
+      </nz-form-item >
+      <!-- ADDRESS -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="address">Address</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your Address!" [nzSpan]="14">
+          <input nz-input formControlName="address" name="address" type="text" id="address">
+        </nz-form-control>
+      </nz-form-item >
+      <!-- DESCRIPTION -->
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6" nzFor="learningSubject">Learning Subject</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your Learning Subject!" [nzSpan]="14">
+          <input nz-input formControlName="learningSubject" name="dlearningSubject" type="text" id="learningSubject">
+        </nz-form-control>
+      </nz-form-item >
+
+      <!-- SAVE AND CLEAR BUTTONS -->
+      <div class="d-flex gap-1 justify-content-end">
+        <button (click)="addStudent()" nz-button nzType="primary">{{ isAdd ? 'Add' : 'Edit' }}</button>
+        <button (click)="reset()" nz-button>Clear</button>
+      </div>
+  </form>

@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TeacherService } from '../services/teacher.service';
+import { StudentService } from '../services/student.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TeachersResponse } from '../models/teacher.model';
+import { StudentsResponse } from '../models/student.model';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { SaveNotificationComponent } from 'src/app/components/save-notification/save-notification.component';
 
 @Component({
-  selector: 'app-teacher-edit',
-  templateUrl: './teacher-edit.component.html',
-  styleUrls: ['./teacher-edit.component.less'],
+  selector: 'app-student-edit',
+  templateUrl: './student-add-edit.component.html',
+  styleUrls: ['./student-add-edit.component.css'],
   providers: [ MatSnackBar ]
 })
-export class TeacherAddEditComponent {
+export class StudentAddEditComponent {
   id!:number;
   isAdd = true;
 
@@ -25,7 +25,7 @@ export class TeacherAddEditComponent {
    */
   constructor(
     private fb: FormBuilder,
-    private $teachers: TeacherService,
+    private $student: StudentService,
     private router: Router,
     private route: ActivatedRoute,
     private _snackBar: MatSnackBar
@@ -34,8 +34,8 @@ export class TeacherAddEditComponent {
     if(id) {
       this.id = id;
       this.isAdd = false;
-      this.$teachers.getById(this.id).subscribe((teacher) => {
-        this.setFormValues(teacher);
+      this.$student.getById(this.id).subscribe((student) => {
+        this.setFormValues(student);
       })
     }
   }
@@ -43,7 +43,7 @@ export class TeacherAddEditComponent {
   /**
    * 
    */
-  setFormValues(model: TeachersResponse) {
+  setFormValues(model: StudentsResponse) {
     // To set when editing
     this.form.patchValue({
       id: model.id,
@@ -55,7 +55,7 @@ export class TeacherAddEditComponent {
       email: model.email,
       telegramUserName: model.telegramUserName,
       address: model.address,
-      specialization: model.specialization
+      learningSubject: model.learningSubject
     })
   }
 
@@ -72,13 +72,13 @@ export class TeacherAddEditComponent {
     email: ['', Validators.required],
     telegramUserName: ['', Validators.required],
     address: ['', Validators.required],
-    specialization: ['', Validators.required]
+    learningSubject: ['', Validators.required]
   })
 
   /**
    * 
    */
-  addTeacher() {
+  addStudent() {
     if(this.form.invalid){
       this.updateValueAndValidity()
 
@@ -89,20 +89,20 @@ export class TeacherAddEditComponent {
 
     const request = this.form.getRawValue();
     // To get last element's id and create new one
-    this.$teachers.getAll().subscribe((teachers) => {
-      const id = teachers.at(-1)?.id as number + 1;
+    this.$student.getAll().subscribe((students) => {
+      const id = students.at(-1)?.id as number + 1;
       request.id = request.id ?? id;
-      // When teacher add new data
+      // When student add new data
       if(!this.id) {
-        this.$teachers.postData(request).subscribe(() => {
-          this.openSnackBar("Teacher data successfully added!", "success");
-          // console.log('post data teacher')
+        this.$student.postData(request).subscribe(() => {
+          this.openSnackBar("Student data successfully added!", "success");
+          // console.log('post data student')
         })
-      // When teacher edit old data
+      // When student edit old data
       } else {
-        this.$teachers.putData(this.id, request).subscribe(() => {
-          this.openSnackBar("Teacher data successfully changed!", "success");
-          // console.log('put data teacher')
+        this.$student.putData(this.id, request).subscribe(() => {
+          this.openSnackBar("Student data successfully changed!", "success");
+          // console.log('put data student')
         })
       }
       this.router.navigate([this.isAdd ? '../' : '../../'], { relativeTo: this.route })
