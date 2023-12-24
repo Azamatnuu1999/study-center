@@ -1,13 +1,18 @@
 <nz-layout>
     <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
       <div class="logo d-flex g-1 items-center">
-        <img src="assets/img/study.png" width="30px" alt="study center logo">
-        <h4 
-          class="text-white" 
-          [ngClass]="isCollapsed ? 'display-none' : ''"
+        <img 
+          *ngIf="!isCollapsed"
+          src="assets/img/mylogo.jpg" 
+          alt="study center logo" 
+          width="100%"
         >
-          Study-center
-        </h4>
+        <img 
+          *ngIf="isCollapsed"
+          src="assets/img/logoCollapsed.jpg" 
+          alt="study center logo"
+          width="100%"
+        >
       </div>
       <ul nz-menu nzTheme="dark" nzMode="inline">
         <li nz-menu-item [routerLink]="['teacher']">
@@ -32,7 +37,7 @@
       <nz-content>
         <nz-breadcrumb>
           <nz-breadcrumb-item>Admin</nz-breadcrumb-item>
-          <nz-breadcrumb-item>Section</nz-breadcrumb-item>
+          <nz-breadcrumb-item>{{ sectionName }}</nz-breadcrumb-item>
         </nz-breadcrumb>
         <div class="inner-content">
             <router-outlet></router-outlet>

@@ -10,7 +10,7 @@
       "email": "Alex23@gmail.com",
       "telegramUserName": "t.me/AlexAlan",
       "address": "London city",
-      "specialization": "Teacher"
+      "specialization": "Teachers"
     },
     {
       "id": 2,
@@ -26,7 +26,7 @@
     },
     {
       "id": 3,
-      "name": "Sam",
+      "name": "Sams",
       "description": "Assistent teacher",
       "dateOfBirth": "2/10/2000",
       "dateOfRegister": "1/01/2023",
@@ -34,6 +34,18 @@
       "email": "Sam@gmail.com",
       "telegramUserName": "t.me/Samm",
       "address": "London city",
+      "specialization": "Teacher"
+    },
+    {
+      "id": 4,
+      "name": "Bob",
+      "description": "Teacher",
+      "dateOfBirth": "1999.09.09",
+      "dateOfRegister": "2023.01.01",
+      "phone": "+382374239487",
+      "email": "Bob@gmail.com",
+      "telegramUserName": "t.me/bob",
+      "address": "Tashkent",
       "specialization": "Teacher"
     }
   ],
@@ -51,7 +63,7 @@
       "learningSubject": "Algebra"
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Karlson",
       "description": "Middle Student",
       "dateOfBirth": "24/11/1999",
@@ -84,6 +96,18 @@
       "email": "yuki@gmail.com",
       "telegramUserName": "t.me/myYuki",
       "address": "Tokio city",
+      "learningSubject": "Math"
+    },
+    {
+      "id": 5,
+      "name": "Naruto",
+      "description": "Hokage",
+      "dateOfBirth": "2000",
+      "dateOfRegister": "2023-04-04",
+      "phone": "+990 90000000",
+      "email": "uzumaki@gmail.com",
+      "telegramUserName": "t.me/hello",
+      "address": "tokio",
       "learningSubject": "Math"
     }
   ]

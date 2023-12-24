@@ -44,18 +44,10 @@ export class TeacherAddEditComponent {
    * 
    */
   setFormValues(model: TeachersResponse) {
+    type TeacherFormKeys = keyof typeof this.form.controls;
     // To set when editing
-    this.form.patchValue({
-      id: model.id,
-      name: model.name,
-      description: model.description,
-      dateOfBirth: model.dateOfBirth,
-      dateOfRegister: model.dateOfRegister,
-      phone: model.phone,
-      email: model.email,
-      telegramUserName: model.telegramUserName,
-      address: model.address,
-      specialization: model.specialization
+    Object.keys(this.form.controls).forEach((key) => {
+      this.form.controls[key].setValue(model[key as keyof TeachersResponse])
     })
   }
 

@@ -1,0 +1,11 @@
+[data-n-id] rect {
+    fill: #000000d9;
+}
+
+body > div {
+    display: none;
+}
+
+.cdk-overlay-container {
+    display: block;
+}

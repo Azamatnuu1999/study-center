@@ -11,24 +11,36 @@ import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzFormModule } from "ng-zorro-antd/form";
 import { NzInputModule } from "ng-zorro-antd/input";
 import { ReactiveFormsModule } from "@angular/forms";
+import { TeacherChartComponent } from './teacher-chart/teacher-chart.component';
+import { ChartModule } from "@syncfusion/ej2-angular-charts";
+import { TeacherOrgChartComponent } from './teacher-org-chart/teacher-org-chart.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule ({
     declarations: [ 
         TeacherComponent, 
         TeacherListComponent,
-        TeacherAddEditComponent
+        TeacherAddEditComponent,
+        TeacherChartComponent,
+        TeacherOrgChartComponent
     ],
     imports: [ 
         CommonModule, 
         TeacherRoutingModule,
-        ReactiveFormsModule, 
+        ReactiveFormsModule,
 
         NzDividerModule,
         NzTableModule,
         NzButtonModule,
         NzIconModule,
         NzFormModule,
-        NzInputModule
+        NzInputModule,
+
+        ChartModule,
+
+        NgxEchartsModule.forRoot({
+            echarts: () => import('echarts')
+        })
     ]
 })
 

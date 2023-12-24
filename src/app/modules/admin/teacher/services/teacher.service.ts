@@ -1,60 +1,29 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TeachersRequest, TeachersResponse } from "../models/teacher.model";
-import { Observable } from "rxjs";
+import { BaseService } from "../../shared/services/base.service";
+import { CRUDService } from "../../shared/services/crud.service";
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class TeacherService {
+export class TeacherService extends CRUDService<
+  TeachersResponse, 
+  TeachersRequest
+> {
     /**
      * 
      */
-    url: string = 'http://localhost:3000/teachers';
+    protected override url = 'teachers';
+
 
     /**
      * 
-     * @param http 
      */
     constructor(
-        private http: HttpClient
+        private $base: BaseService
     ) {
-
+        super($base)
     }
 
-    /**
-     * 
-     */
-    getAll() : Observable<TeachersResponse[]> {
-        return this.http.get<TeachersResponse[]>(this.url);
-    }
-
-    /**
-     *
-     */
-    getById(id: number) : Observable<TeachersResponse> {
-        return this.http.get<TeachersResponse>(`${this.url}/${id}`)
-    }
-
-    /**
-     * 
-     */
-    postData(model: TeachersRequest) {
-        return this.http.post(this.url, model);
-    }
-
-    /**
-     * 
-     */
-    putData(id: number, model: TeachersRequest) {
-        return this.http.put(`${this.url}/${id}`, model);
-    }
-
-    /**
-     * 
-     */
-    deleteData(id: number) {
-        return this.http.delete(`${this.url}/${id}`);
-    }
 }

@@ -3,50 +3,64 @@
   class="mb-1"
   nz-button 
   nzType="primary"
->Add</button>
+>
+  Add
+</button>
+<button
+  [routerLink]="['chart']"
+  class="mb-1"
+  nz-button
+>
+  Go To Chart
+</button>
+<button
+  [routerLink]="['orgchart']"
+  class="mb-1"
+  nz-button
+>
+  Go To OrgChart
+</button>
 
-<ng-container *ngIf="teachers$ | async as teachers; else loading">
-  <nz-table #basicTable [nzData]="teachers">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Date of Birth</th>
-        <th>Phone Number</th>
-        <th>Telegram Address</th>
-        <th>Email Address</th>
-        <th>Address</th>
-        <th>Specialization</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let teacher of basicTable.data">
-        <td>{{ teacher.id }}</td>
-        <td>{{ teacher.name }}</td>
-        <td>{{ teacher.description }}</td>
-        <td>{{ teacher.dateOfBirth }}</td>
-        <td>{{ teacher.phone }}</td>
-        <td>{{ teacher.telegramUserName }}</td>
-        <td>{{ teacher.email }}</td>
-        <td>{{ teacher.address }}</td>
-        <td>{{ teacher.specialization }}</td>
-        <td>
-          <nz-button-group>
-            <button nz-button>
-              <span (click)="editTeacher(teacher.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
-            </button>
-            <button nz-button>
-                <span (click)="deleteTeacher(teacher.id)" nz-icon nzType="delete" nzTheme="twotone"></span>
-            </button>
-          </nz-button-group>
-        </td>
-      </tr>
-    </tbody>
-  </nz-table>
-</ng-container>
-
-<ng-template #loading>
-  loading ...
-</ng-template>
+<nz-table 
+  #basicTable 
+  [nzData]="(teachers$ | async) || []"
+  [nzLoading]="!(teachers$ | async)"
+>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Date of Birth</th>
+      <th>Phone Number</th>
+      <th>Telegram Address</th>
+      <th>Email Address</th>
+      <th>Address</th>
+      <th>Specialization</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let teacher of basicTable.data">
+      <td>{{ teacher.id }}</td>
+      <td>{{ teacher.name }}</td>
+      <td>{{ teacher.description }}</td>
+      <td>{{ teacher.dateOfBirth }}</td>
+      <td>{{ teacher.phone }}</td>
+      <td>{{ teacher.telegramUserName }}</td>
+      <td>{{ teacher.email }}</td>
+      <td>{{ teacher.address }}</td>
+      <td>{{ teacher.specialization }}</td>
+      <td>
+        <nz-button-group>
+          <button nz-button>
+            <span (click)="editTeacher(teacher.id)" nz-icon nzType="edit" nzTheme="twotone"></span>
+          </button>
+          <button nz-button>
+              <span (click)="deleteTeacher(teacher.id)" nz-icon nzType="delete" nzTheme="twotone"></span>
+          </button>
+        </nz-button-group>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

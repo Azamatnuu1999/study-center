@@ -8,6 +8,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
+  /**
+   * 
+   */
   isCollapsed = false;
+  sectionName!: string;
 
+  constructor() {
+  }
 }

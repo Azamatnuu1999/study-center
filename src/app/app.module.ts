@@ -12,8 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { CommonModule } from '@angular/common';
 import { SaveNotificationComponent } from './components/save-notification/save-notification.component';
+
+import { NgxEchartsModule } from 'ngx-echarts';
+
+// import the ChartModule for the Chart component
+import { ChartModule } from '@syncfusion/ej2-angular-charts';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +39,10 @@ import { SaveNotificationComponent } from './components/save-notification/save-n
 
     MatButtonModule,
     MatSnackBarModule,
+
+    ChartModule,
+
+    NgxEchartsModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

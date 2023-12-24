@@ -33,7 +33,9 @@
               "src/theme.less",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/diagram/orgchart.js"
+            ]
           },
           "configurations": {
             "production": {
