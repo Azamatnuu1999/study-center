@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from '../services/teacher.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TeachersResponse } from '../models/teacher.model';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { SaveNotificationComponent } from 'src/app/components/save-notification/save-notification.component';
+import { TranslateService } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-teacher-edit',
@@ -12,9 +14,10 @@ import { SaveNotificationComponent } from 'src/app/components/save-notification/
   styleUrls: ['./teacher-edit.component.less'],
   providers: [ MatSnackBar ]
 })
-export class TeacherAddEditComponent {
+export class TeacherAddEditComponent implements OnDestroy {
   id!:number;
   isAdd = true;
+  destroyer$ = new Subject<void>();
 
   // for save notification modal
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
@@ -28,16 +31,29 @@ export class TeacherAddEditComponent {
     private $teachers: TeacherService,
     private router: Router,
     private route: ActivatedRoute,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {
     const id = this.route.snapshot.params['id']
+
     if(id) {
       this.id = id;
       this.isAdd = false;
-      this.$teachers.getById(this.id).subscribe((teacher) => {
-        this.setFormValues(teacher);
+      this.$teachers
+        .getById(this.id)
+        .pipe(takeUntil(this.destroyer$))
+        .subscribe((teacher) => {
+          this.setFormValues(teacher);
       })
     }
+
+    const lang = localStorage.getItem('currentLanguage');
+    if(lang) {
+      this.translate.use(lang)
+    } else {
+      this.translate.use('en')
+    }
+    
   }
 
   /**
@@ -81,23 +97,32 @@ export class TeacherAddEditComponent {
 
     const request = this.form.getRawValue();
     // To get last element's id and create new one
-    this.$teachers.getAll().subscribe((teachers) => {
-      const id = teachers.at(-1)?.id as number + 1;
-      request.id = request.id ?? id;
-      // When teacher add new data
-      if(!this.id) {
-        this.$teachers.postData(request).subscribe(() => {
-          this.openSnackBar("Teacher data successfully added!", "success");
-          // console.log('post data teacher')
-        })
-      // When teacher edit old data
-      } else {
-        this.$teachers.putData(this.id, request).subscribe(() => {
-          this.openSnackBar("Teacher data successfully changed!", "success");
-          // console.log('put data teacher')
-        })
-      }
-      this.router.navigate([this.isAdd ? '../' : '../../'], { relativeTo: this.route })
+    this.$teachers
+      .getAll()
+      .pipe(takeUntil(this.destroyer$))
+      .subscribe((teachers) => {
+        const id = teachers.at(-1)?.id as number + 1;
+        request.id = request.id ?? id;
+        // When teacher add new data
+        if(!this.id) {
+          this.$teachers
+            .postData(request)
+            .pipe(takeUntil(this.destroyer$))
+            .subscribe(() => {
+              this.openSnackBar("Teacher data successfully added!", "success");
+              // console.log('post data teacher')
+          })
+        // When teacher edit old data
+        } else {
+          this.$teachers
+            .putData(this.id, request)
+            .pipe(takeUntil(this.destroyer$))
+            .subscribe(() => {
+              this.openSnackBar("Teacher data successfully changed!", "success");
+              // console.log('put data teacher')
+          })
+        }
+        this.router.navigate([this.isAdd ? '../' : '../../'], { relativeTo: this.route })
     })
   }
 
@@ -134,6 +159,14 @@ export class TeacherAddEditComponent {
         text: text
       }
     })
+  }
+
+  /**
+   * 
+   */
+  ngOnDestroy(): void {
+      this.destroyer$.next();
+      this.destroyer$.complete();
   }
 
 }

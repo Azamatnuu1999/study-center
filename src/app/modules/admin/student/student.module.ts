@@ -11,6 +11,7 @@ import { NzIconModule } from "ng-zorro-antd/icon";
 import { NzFormModule } from "ng-zorro-antd/form";
 import { NzInputModule } from "ng-zorro-antd/input";
 import { ReactiveFormsModule } from "@angular/forms";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule ({
     declarations: [ 
@@ -28,7 +29,9 @@ import { ReactiveFormsModule } from "@angular/forms";
         NzButtonModule,
         NzIconModule,
         NzFormModule,
-        NzInputModule
+        NzInputModule,
+
+        TranslateModule
     ]
 })
 

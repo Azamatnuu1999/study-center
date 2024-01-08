@@ -1,6 +1,6 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable, isDevMode } from '@angular/core';
+import { shareReplay } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -10,10 +10,18 @@ export class BaseService {
     /**
      * 
      */
-    url: string = 'http://localhost:3000';
+    url: string = isDevMode() ? 'http://localhost:3000' : 'http://localhost:3000';
     getUrl(subUrl: string) {
         return `${this.url}/${subUrl}`
     }
+
+    /**
+     * 
+     */
+    private readonly _headers = new HttpHeaders().set(
+        'Authorization',
+        'Basic' + window.localStorage.getItem('userData')
+    )
 
     /**
      * 
@@ -30,7 +38,7 @@ export class BaseService {
      * @param params 
      */
     get<T>(url: string, params?: HttpParams) {
-        return this.http.get<T>(this.getUrl(url), { params });
+        return this.http.get<T>(this.getUrl(url), { params, headers: this._headers }).pipe(shareReplay(1));
     }
 
     /**
@@ -39,7 +47,7 @@ export class BaseService {
      * @param model 
      */
     post<T>(url: string, model?: any) {
-        return this.http.post<T>(this.getUrl(url), model);
+        return this.http.post<T>(this.getUrl(url), model, { headers: this._headers });
     }
 
     /**
@@ -48,7 +56,7 @@ export class BaseService {
      * @param model 
      */
     put<T>(url: string, model?: any) {
-        return this.http.put<T>(this.getUrl(url), model);
+        return this.http.put<T>(this.getUrl(url), model, { headers: this._headers });
     }
 
     /**
@@ -56,6 +64,6 @@ export class BaseService {
      * @param url 
      */
     delete<T>(url: string, body?: any) {
-        return this.http.delete<T>(this.getUrl(url), { body });
+        return this.http.delete<T>(this.getUrl(url), { body, headers: this._headers });
     }
 }

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsResponse } from '../models/student.model';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { SaveNotificationComponent } from 'src/app/components/save-notification/save-notification.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-student-edit',
@@ -15,6 +16,7 @@ import { SaveNotificationComponent } from 'src/app/components/save-notification/
 export class StudentAddEditComponent {
   id!:number;
   isAdd = true;
+  private destroyer$ = new Subject<void>();
 
   // for save notification modal
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
@@ -34,8 +36,11 @@ export class StudentAddEditComponent {
     if(id) {
       this.id = id;
       this.isAdd = false;
-      this.$student.getById(this.id).subscribe((student) => {
-        this.setFormValues(student);
+      this.$student
+        .getById(this.id)
+        .pipe(takeUntil(this.destroyer$))
+        .subscribe((student) => {
+          this.setFormValues(student);
       })
     }
   }
@@ -94,9 +99,12 @@ export class StudentAddEditComponent {
       request.id = request.id ?? id;
       // When student add new data
       if(!this.id) {
-        this.$student.postData(request).subscribe(() => {
-          this.openSnackBar("Student data successfully added!", "success");
-          // console.log('post data student')
+        this.$student
+          .postData(request)
+          .pipe(takeUntil(this.destroyer$))
+          .subscribe(() => {
+            this.openSnackBar("Student data successfully added!", "success");
+            // console.log('post data student')
         })
       // When student edit old data
       } else {

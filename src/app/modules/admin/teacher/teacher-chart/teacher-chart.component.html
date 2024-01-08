@@ -7,7 +7,17 @@
     ></span>
         Teacher orgchart
 </h1>
-<div echarts [options]="options" class="demo-chart"></div>
+<div id="chart">
+    <apx-chart
+      [series]="chartOptions.series!"
+      [chart]="chartOptions.chart!"
+      [dataLabels]="chartOptions.dataLabels!"
+      [plotOptions]="chartOptions.plotOptions!"
+      [xaxis]="chartOptions.xaxis!"
+      [stroke]="chartOptions.stroke!"
+    ></apx-chart>
+</div>
+<div echarts [options]="options" class="demo-chart" style="margin-top: 50px;"></div>
 <!-- <ejs-chart id="chart-container">
     <e-series-collection>
         <e-series [dataSource]='chartData' type='Line' xName='month' yName='sales' name='Sales'></e-series>

@@ -4,21 +4,21 @@
   nz-button 
   nzType="primary"
 >
-  Add
+  {{ 'add' | translate }}
 </button>
 <button
   [routerLink]="['chart']"
   class="mb-1"
   nz-button
 >
-  Go To Chart
+  Chart
 </button>
 <button
   [routerLink]="['orgchart']"
   class="mb-1"
   nz-button
 >
-  Go To OrgChart
+  OrgChart
 </button>
 
 <nz-table 
@@ -29,15 +29,15 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Date of Birth</th>
-      <th>Phone Number</th>
-      <th>Telegram Address</th>
-      <th>Email Address</th>
-      <th>Address</th>
-      <th>Specialization</th>
-      <th>Actions</th>
+      <th>{{ 'name' | translate }}</th>
+      <th>{{ 'description' | translate }}</th>
+      <th>{{ 'dateOfBirth' | translate }}</th>
+      <th>{{ 'phoneNumber' | translate }}</th>
+      <th>{{ 'telegramAddress' | translate }}</th>
+      <th>{{ 'emailAddress' | translate }}</th>
+      <th>{{ 'address' | translate }}</th>
+      <th>{{ 'learningSubjects' | translate }}</th>
+      <th>{{ 'actions' | translate }}</th>
     </tr>
   </thead>
   <tbody>

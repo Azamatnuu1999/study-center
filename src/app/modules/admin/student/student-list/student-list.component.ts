@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StudentsResponse } from '../models/student.model';
 import { StudentService } from '../services/student.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-student-list',
@@ -10,10 +10,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./student-list.component.css']
 })
 
-export class StudentListComponent implements OnInit {
+export class StudentListComponent implements OnInit, OnDestroy {
   /**
    * 
    */
+  private destroyer$ = new Subject<void>();
   public students$!: Observable<StudentsResponse[]>;
 
   /**
@@ -50,9 +51,17 @@ export class StudentListComponent implements OnInit {
    * 
    */
   deleteStudent(id: number) {
-    this.$students.deleteData(id).subscribe(() => {
+    this.$students.deleteData(id).pipe(takeUntil(this.destroyer$)).subscribe(() => {
       this.getStudents()
     })
+  }
+
+  /**
+   * 
+   */
+  ngOnDestroy() : void {
+    this.destroyer$.next();
+    this.destroyer$.complete();
   }
 
 }

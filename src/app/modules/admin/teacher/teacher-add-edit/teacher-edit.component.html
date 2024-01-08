@@ -5,71 +5,136 @@
       nzType="arrow-left" 
       nzTheme="outline"
     ></span>
-    {{ isAdd ? 'Add' : 'Edit' }} Teacher
+    {{ isAdd ? ( 'add' | translate )  : ('edit' | translate) }} {{ 'teachers' | translate }}
 </h3>
 <!-- FORM -->
 <form [formGroup]="form" nz-form>
     <!-- NAME -->
     <nz-form-item>
-      <nz-form-label [nzSpan]="6" nzFor="name">Name</nz-form-label>
+      <nz-form-label [nzSpan]="6" nzFor="name">{{ 'name' | translate}}</nz-form-label>
       <nz-form-control nzErrorTip="Please input your Name!" [nzSpan]="14">
-        <input nz-input formControlName="name" name="name" type="text" id="name">
+        <input 
+          nz-input 
+          formControlName="name" 
+          name="name" 
+          type="text" 
+          id="name"
+        >
       </nz-form-control>
     </nz-form-item >
     <!-- DESCRIPTION -->
     <nz-form-item>
-      <nz-form-label [nzSpan]="6" nzFor="description">Description</nz-form-label>
+      <nz-form-label [nzSpan]="6" nzFor="description">{{ 'description' | translate}}</nz-form-label>
       <nz-form-control nzErrorTip="Please input your Description!" [nzSpan]="14">
-        <input nz-input formControlName="description" name="description" type="text" id="description">
+        <input 
+          nz-input 
+          formControlName="description" 
+          name="description" 
+          type="text" 
+          id="description"
+        >
       </nz-form-control>
     </nz-form-item >
     <!-- DATE OF BIRTH -->
     <nz-form-item>
-      <nz-form-label [nzSpan]="6" nzFor="dateOfBirth">Date of Birth</nz-form-label>
+      <nz-form-label [nzSpan]="6" nzFor="dateOfBirth">{{ 'dateOfBirth' | translate}}</nz-form-label>
       <nz-form-control nzErrorTip="Please input your Date of Birth!" [nzSpan]="14">
-        <input nz-input formControlName="dateOfBirth" name="dateOfBirth" type="datetime" id="dateOfBirth">
+        <input 
+          nz-input 
+          formControlName="dateOfBirth" 
+          name="dateOfBirth" 
+          type="datetime" 
+          id="dateOfBirth"
+        >
       </nz-form-control>
     </nz-form-item >
     <!-- DATE OF REGISTER -->
     <nz-form-item>
-        <nz-form-label [nzSpan]="6" nzFor="dateOfRegister">Date of Register</nz-form-label>
+        <nz-form-label [nzSpan]="6" nzFor="dateOfRegister">{{ 'dateOfRegister' | translate}}</nz-form-label>
         <nz-form-control nzErrorTip="Please input your Date of Register!" [nzSpan]="14">
-          <input nz-input formControlName="dateOfRegister" name="dateOfRegister" type="datetime" id="dateOfRegister">
+          <input 
+            nz-input 
+            formControlName="dateOfRegister" 
+            name="dateOfRegister" 
+            type="datetime" 
+            id="dateOfRegister"
+          >
         </nz-form-control>
       </nz-form-item >
     <!-- PHONE NUBMER -->
     <nz-form-item>
-        <nz-form-label [nzSpan]="6" nzFor="phone">Phone Number</nz-form-label>
-        <nz-form-control nzErrorTip="Please input your Phone Number!" [nzSpan]="14">
-          <input nz-input formControlName="phone" name="dateOfBirth" type="text" id="phone">
+        <nz-form-label [nzSpan]="6" nzFor="phone">{{ 'phoneNumber' | translate}}</nz-form-label>
+        <nz-form-control [nzErrorTip]="error" [nzSpan]="14">
+          <input 
+            nz-input 
+            formControlName="phone"
+            name="phone"
+            type="text"
+            id="phone"
+            [prefix]="'+998'"
+            [mask]="'(00) 000 00 00'"
+            [showMaskTyped]="true"
+          >
         </nz-form-control>
+        <ng-template #error let-control>
+          <ng-container *ngIf="control.getError('required')">
+            Ushbu maydonni to'ldiring
+          </ng-container>
+          <ng-container *ngIf="control.getError('mask')">
+            Telefon nomeri noto'g'ri
+          </ng-container>
+        </ng-template>
       </nz-form-item >
       <!-- EMAIL -->
       <nz-form-item>
-        <nz-form-label [nzSpan]="6" nzFor="email">Email</nz-form-label>
+        <nz-form-label [nzSpan]="6" nzFor="email">{{ 'emailAddress' | translate}}</nz-form-label>
         <nz-form-control nzErrorTip="Please input your Email!" [nzSpan]="14">
-          <input nz-input formControlName="email" name="email" type="email" id="email">
+          <input 
+            nz-input
+            formControlName="email" 
+            name="email" 
+            type="email" 
+            id="email"
+          >
         </nz-form-control>
       </nz-form-item>
       <!-- TELEGRAM USER NAME -->
       <nz-form-item>
-        <nz-form-label [nzSpan]="6" nzFor="telegram">Telegram user Name</nz-form-label>
+        <nz-form-label [nzSpan]="6" nzFor="telegram">{{ 'telegramAddress' | translate}}</nz-form-label>
         <nz-form-control nzErrorTip="Please input your Telegram!" [nzSpan]="14">
-          <input nz-input formControlName="telegramUserName" name="telegramUserName" type="text" id="telegram">
+          <input 
+            nz-input 
+            formControlName="telegramUserName" 
+            name="telegramUserName" 
+            type="text" 
+            id="telegram"
+          >
         </nz-form-control>
       </nz-form-item >
       <!-- ADDRESS -->
       <nz-form-item>
-        <nz-form-label [nzSpan]="6" nzFor="address">Address</nz-form-label>
+        <nz-form-label [nzSpan]="6" nzFor="address">{{ 'address' | translate}}</nz-form-label>
         <nz-form-control nzErrorTip="Please input your Address!" [nzSpan]="14">
-          <input nz-input formControlName="address" name="address" type="text" id="address">
+          <input 
+            nz-input 
+            formControlName="address" 
+            name="address" 
+            type="text" 
+            id="address"
+          >
         </nz-form-control>
       </nz-form-item >
       <!-- DESCRIPTION -->
       <nz-form-item>
         <nz-form-label [nzSpan]="6" nzFor="specialization">Specialization</nz-form-label>
         <nz-form-control nzErrorTip="Please input your Specialization!" [nzSpan]="14">
-          <input nz-input formControlName="specialization" name="dspecialization" type="text" id="specialization">
+          <input 
+            nz-input 
+            formControlName="specialization" 
+            name="dspecialization" 
+            type="text" 
+            id="specialization"
+          >
         </nz-form-control>
       </nz-form-item >
 

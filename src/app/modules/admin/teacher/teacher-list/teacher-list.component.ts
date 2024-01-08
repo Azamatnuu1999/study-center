@@ -3,6 +3,7 @@ import { TeachersResponse } from '../models/teacher.model';
 import { TeacherService } from '../services/teacher.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-teacher-list',
@@ -22,9 +23,15 @@ export class TeacherListComponent implements OnInit {
   constructor(
     private $teachers: TeacherService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
-
+    const lang = localStorage.getItem('currentLanguage');
+    if(lang) {
+      this.translate.use(lang)
+    } else {
+      this.translate.use('en')
+    }
   }
 
   ngOnInit() {

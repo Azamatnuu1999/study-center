@@ -1,0 +1,15 @@
+{
+    "teachers": "Учителы",
+    "students": "Студенты",
+    "add": "Добавить",
+    "edit": "Изменить",
+    "name": "Имя",
+    "description": "Описание",
+    "dateOfBirth": "Дата рождения",
+    "phoneNumber": "Номер телефона",
+    "telegramAddress": "Телеграм адрес",
+    "emailAddress": "Email aдрес",
+    "address": "Aдрес",
+    "learningSubjects": "Учебные предметы",
+    "actions": "Действия"
+}

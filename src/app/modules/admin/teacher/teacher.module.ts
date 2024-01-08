@@ -15,6 +15,10 @@ import { TeacherChartComponent } from './teacher-chart/teacher-chart.component';
 import { ChartModule } from "@syncfusion/ej2-angular-charts";
 import { TeacherOrgChartComponent } from './teacher-org-chart/teacher-org-chart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { NgApexchartsModule } from "ng-apexcharts";
+import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
+import { NzSelectModule } from "ng-zorro-antd/select";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule ({
     declarations: [ 
@@ -35,13 +39,21 @@ import { NgxEchartsModule } from 'ngx-echarts';
         NzIconModule,
         NzFormModule,
         NzInputModule,
+        NzSelectModule,
 
         ChartModule,
 
         NgxEchartsModule.forRoot({
             echarts: () => import('echarts')
-        })
-    ]
+        }),
+
+        NgApexchartsModule,
+
+        NgxMaskDirective,
+
+        TranslateModule
+    ],
+    providers: [ provideNgxMask() ]
 })
 
 export class TeacherModule {

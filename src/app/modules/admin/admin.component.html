@@ -17,22 +17,35 @@
       <ul nz-menu nzTheme="dark" nzMode="inline">
         <li nz-menu-item [routerLink]="['teacher']">
           <span nz-icon nzType="user" nzTheme="outline"></span>
-          <span>Teacher</span>
+          <span>{{ 'teachers' | translate }}</span>
         </li>
         <li nz-menu-item [routerLink]="['student']">
           <span nz-icon nzType="team" nzTheme="outline"></span>
-          <span>Student</span>
+          <span>{{ 'students' | translate }}</span>
         </li>
       </ul>
     </nz-sider>
     <nz-layout>
-      <nz-header>
+      <nz-header 
+        style="display: flex; justify-content: space-between; align-items: center;"
+      >
+      <!-- Collapse button -->
         <span
           class="trigger"
           nz-icon
           [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           (click)="isCollapsed = !isCollapsed"
         ></span>
+        <!-- Language change item -->
+        <nz-select 
+          style="margin-right: 10px;" 
+          [(ngModel)]="currentLanguage" 
+          (ngModelChange)="currentLanguageChange($event)"
+        >
+            <nz-option nzValue="uz" nzLabel="uz"></nz-option>
+            <nz-option nzValue="ru" nzLabel="ru"></nz-option>
+            <nz-option nzValue="en" nzLabel="en"></nz-option>
+        </nz-select>
       </nz-header>
       <nz-content>
         <nz-breadcrumb>

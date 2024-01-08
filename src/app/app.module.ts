@@ -18,7 +18,20 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 // import the ChartModule for the Chart component
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { registerLocaleData } from '@angular/common';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+
+// registerLocaleData(en);
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -42,9 +55,24 @@ import { ChartModule } from '@syncfusion/ej2-angular-charts';
 
     ChartModule,
 
-    NgxEchartsModule
+    NgxEchartsModule,
+
+    NgApexchartsModule,
+
+    NgxMaskDirective,
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
-  providers: [],
+  providers: [ 
+    provideNgxMask(), 
+    { provide: NZ_I18N, useValue: en_US} 
+  ],
   bootstrap: [ AppComponent ]
 })
 

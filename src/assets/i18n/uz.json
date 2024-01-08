@@ -1,0 +1,15 @@
+{
+    "teachers": "O'qituvchilar",
+    "students": "O'quvchilar",
+    "add": "Qo'shish",
+    "edit": "Tahrirlash",
+    "name": "Ism",
+    "description": "Tavsifi",
+    "dateOfBirth": "Tug'ilgan sanasi",
+    "phoneNumber": "Telefon raqami",
+    "telegramAddress": "Telegram manzili",
+    "emailAddress": "Email manzili",
+    "address": "Address",
+    "learningSubjects": "O'rganayotgan fani",
+    "actions": "O'zgartirish"
+}

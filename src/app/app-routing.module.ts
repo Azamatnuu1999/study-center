@@ -1,13 +1,14 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { NgModule } from "@angular/core";
+import { AuthGuard } from "./modules/sign-in/guard/auth.guard";
 
 
 const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'admin'
+        redirectTo: 'sign-in'
     },
     {
         path: 'client',
@@ -19,7 +20,14 @@ const routes: Routes = [
         loadChildren() {
             return import('./modules/admin/admin.module').then((m) => m.AdminModule)
         },
-        title: 'Admin sahifasi'
+        title: 'Admin sahifasi',
+        canActivate: [ AuthGuard ]
+    },
+    {
+        path: 'sign-in',
+        loadChildren() {
+            return import('./modules/sign-in/sign-in.module').then((m) => m.SignInModule)
+        }
     },
     {
         path: '**',

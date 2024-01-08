@@ -1,0 +1,15 @@
+{
+    "teachers": "Teachers",
+    "students": "Students",
+    "add": "Add",
+    "edit": "Edit",
+    "name": "Name",
+    "description": "Description",
+    "dateOfBirth": "Date of birth",
+    "phoneNumber": "Phone number",
+    "telegramAddress": "Telegram address",
+    "emailAddress": "Email address",
+    "address": "Address",
+    "learningSubjects": "Learning subjects",
+    "actions": "Actions"
+}
